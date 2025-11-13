@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog de Noticias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📰 Mi Blog de Noticias</h1>
+            <p class="subtitle">Comparte noticias y comenta</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Formulario para crear noticias -->
+        <section class="create-post-section">
+            <h2>Escribir Nueva Noticia</h2>
+            <form id="post-form">
+                <div class="form-group">
+                    <label for="post-title">Título:</label>
+                    <input type="text" id="post-title" required placeholder="Título de la noticia">
+                </div>
+                <div class="form-group">
+                    <label for="post-author">Autor:</label>
+                    <input type="text" id="post-author" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Contenido:</label>
+                    <textarea id="post-content" rows="5" required placeholder="Escribe tu noticia aquí..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar Noticia</button>
+            </form>
+        </section>
+
+        <!-- Lista de noticias -->
+        <section class="posts-section">
+            <h2>Últimas Noticias</h2>
+            <div id="posts-container">
+                <!-- Las noticias se cargarán aquí dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mi Blog de Noticias. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
