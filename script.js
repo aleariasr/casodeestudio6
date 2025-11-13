@@ -1,12 +1,14 @@
 // Clase para manejar el Blog
 class Blog {
     constructor() {
-        this.posts = this.loadPosts();
+        this.posts = [];
+        this.apiUrl = '/api/posts';
         this.init();
     }
 
     // Inicializar el blog
-    init() {
+    async init() {
+        await this.loadPosts();
         this.renderPosts();
         this.setupEventListeners();
     }
@@ -18,7 +20,7 @@ class Blog {
     }
 
     // Manejar envío de nuevo post
-    handlePostSubmit(e) {
+    async handlePostSubmit(e) {
         e.preventDefault();
         
         const title = document.getElementById('post-title').value.trim();
@@ -30,23 +32,30 @@ class Blog {
             return;
         }
 
-        const post = {
-            id: Date.now(),
-            title,
-            author,
-            content,
-            date: new Date().toISOString(),
-            comments: []
-        };
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, author, content })
+            });
 
-        this.posts.unshift(post);
-        this.savePosts();
-        this.renderPosts();
+            if (!response.ok) {
+                throw new Error('Error al publicar la noticia');
+            }
 
-        // Limpiar formulario
-        e.target.reset();
-        
-        alert('¡Noticia publicada exitosamente!');
+            await this.loadPosts();
+            this.renderPosts();
+
+            // Limpiar formulario
+            e.target.reset();
+            
+            alert('¡Noticia publicada exitosamente!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al publicar la noticia. Por favor, intenta de nuevo.');
+        }
     }
 
     // Renderizar todos los posts
@@ -195,7 +204,7 @@ class Blog {
     }
 
     // Manejar envío de comentario
-    handleCommentSubmit(postId) {
+    async handleCommentSubmit(postId) {
         const nameInput = document.querySelector(`.comment-name-input[data-post-id="${postId}"]`);
         const textInput = document.querySelector(`.comment-text-input[data-post-id="${postId}"]`);
 
@@ -207,17 +216,20 @@ class Blog {
             return;
         }
 
-        const comment = {
-            id: Date.now(),
-            author: name,
-            text: text,
-            date: new Date().toISOString()
-        };
+        try {
+            const response = await fetch(`${this.apiUrl}/${postId}/comments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ author: name, text })
+            });
 
-        const post = this.posts.find(p => p.id === postId);
-        if (post) {
-            post.comments.push(comment);
-            this.savePosts();
+            if (!response.ok) {
+                throw new Error('Error al publicar el comentario');
+            }
+
+            await this.loadPosts();
             this.renderPosts();
             
             // Mantener la sección de comentarios abierta
@@ -227,28 +239,46 @@ class Blog {
                     commentsSection.style.display = 'block';
                 }
             }, 0);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al publicar el comentario. Por favor, intenta de nuevo.');
         }
     }
 
     // Eliminar un post
-    deletePost(postId) {
+    async deletePost(postId) {
         if (confirm('¿Estás seguro de que quieres eliminar esta noticia?')) {
-            this.posts = this.posts.filter(p => p.id !== postId);
-            this.savePosts();
-            this.renderPosts();
-            alert('Noticia eliminada');
+            try {
+                const response = await fetch(`${this.apiUrl}/${postId}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al eliminar la noticia');
+                }
+
+                await this.loadPosts();
+                this.renderPosts();
+                alert('Noticia eliminada');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al eliminar la noticia. Por favor, intenta de nuevo.');
+            }
         }
     }
 
-    // Guardar posts en localStorage
-    savePosts() {
-        localStorage.setItem('blogPosts', JSON.stringify(this.posts));
-    }
-
-    // Cargar posts desde localStorage
-    loadPosts() {
-        const saved = localStorage.getItem('blogPosts');
-        return saved ? JSON.parse(saved) : [];
+    // Cargar posts desde el servidor
+    async loadPosts() {
+        try {
+            const response = await fetch(this.apiUrl);
+            if (!response.ok) {
+                throw new Error('Error al cargar posts');
+            }
+            this.posts = await response.json();
+        } catch (error) {
+            console.error('Error al cargar posts:', error);
+            this.posts = [];
+        }
     }
 
     // Escapar HTML para prevenir XSS

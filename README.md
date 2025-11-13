@@ -6,7 +6,8 @@ Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript p
 
 - ✅ **Publicación de Noticias**: Formulario completo para crear noticias con título, autor y contenido
 - ✅ **Sistema de Comentarios**: Los usuarios pueden comentar en cada noticia
-- ✅ **Persistencia de Datos**: Utiliza localStorage para guardar todas las noticias y comentarios
+- ✅ **Persistencia de Datos**: Utiliza un servidor backend con almacenamiento en archivo JSON para guardar todas las noticias y comentarios
+- ✅ **Acceso Multi-Dispositivo**: Las noticias se guardan en el servidor y son accesibles desde cualquier dispositivo
 - ✅ **Interfaz Moderna**: Diseño atractivo con gradientes y animaciones
 - ✅ **Responsive**: Compatible con dispositivos móviles y tablets
 - ✅ **Gestión de Contenido**: Eliminar noticias, mostrar/ocultar comentarios
@@ -14,16 +15,33 @@ Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript p
 
 ## 🚀 Cómo Usar
 
-1. **Abrir el sitio**: Simplemente abre `index.html` en tu navegador web
-2. **Publicar una noticia**: 
+### Instalación y Configuración
+
+1. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
+
+2. **Iniciar el servidor**:
+   ```bash
+   npm start
+   ```
+   El servidor se iniciará en `http://localhost:3000`
+
+3. **Abrir el sitio**: Abre tu navegador y ve a `http://localhost:3000`
+
+### Uso del Blog
+
+1. **Publicar una noticia**: 
    - Completa el formulario "Escribir Nueva Noticia"
    - Ingresa título, tu nombre y el contenido
    - Click en "Publicar Noticia"
-3. **Añadir comentarios**:
+2. **Añadir comentarios**:
    - Click en "Añadir comentarios" o "Ver comentarios" en cualquier noticia
    - Click en "+ Añadir comentario"
    - Completa el formulario y click en "Publicar comentario"
-4. **Eliminar noticias**: Click en "Eliminar noticia" para borrar una publicación
+3. **Eliminar noticias**: Click en "Eliminar noticia" para borrar una publicación
+4. **Acceso desde otros dispositivos**: Las noticias se guardan en el servidor, por lo que puedes acceder desde cualquier dispositivo conectado al mismo servidor
 
 ## 📁 Estructura del Proyecto
 
@@ -31,16 +49,25 @@ Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript p
 casodeestudio6/
 ├── index.html      # Estructura HTML del blog
 ├── styles.css      # Estilos CSS
-├── script.js       # Lógica JavaScript
+├── script.js       # Lógica JavaScript del cliente
+├── server.js       # Servidor backend Node.js/Express
+├── package.json    # Dependencias del proyecto
+├── data/           # Directorio para almacenar posts.json (generado automáticamente)
 └── README.md       # Este archivo
 ```
 
 ## 💻 Tecnologías Utilizadas
 
+### Frontend
 - **HTML5**: Estructura semántica del sitio
 - **CSS3**: Estilos modernos con gradientes y animaciones
-- **JavaScript ES6**: Lógica del blog con programación orientada a objetos
-- **localStorage API**: Persistencia de datos en el navegador
+- **JavaScript ES6**: Lógica del cliente con async/await y Fetch API
+
+### Backend
+- **Node.js**: Entorno de ejecución
+- **Express**: Framework web para el servidor
+- **CORS**: Soporte para peticiones cross-origin
+- **File System**: Almacenamiento de datos en archivo JSON
 
 ## 🎨 Capturas de Pantalla
 
@@ -58,19 +85,24 @@ casodeestudio6/
 
 ## 🔧 Características Técnicas
 
-- **Sin dependencias**: No requiere frameworks o librerías externas
-- **Programación Orientada a Objetos**: Clase `Blog` que gestiona toda la funcionalidad
-- **Event Delegation**: Manejo eficiente de eventos dinámicos
+- **Arquitectura Cliente-Servidor**: Frontend separado del backend para mejor escalabilidad
+- **API RESTful**: Endpoints para gestión de posts y comentarios
+- **Almacenamiento Persistente**: Datos guardados en archivo JSON en el servidor
+- **Programación Orientada a Objetos**: Clase `Blog` que gestiona la UI del cliente
+- **Async/Await**: Manejo moderno de operaciones asíncronas
 - **Escape de HTML**: Prevención de ataques XSS
 - **Responsive Design**: Media queries para diferentes tamaños de pantalla
+- **Acceso Multi-Dispositivo**: Las noticias son accesibles desde cualquier dispositivo conectado al servidor
 
 ## 📝 Funcionalidades Destacadas
 
-1. **Timestamps Automáticos**: Cada noticia y comentario incluye fecha y hora
-2. **Contador de Comentarios**: Muestra el número de comentarios por noticia
-3. **Interfaz Intuitiva**: Botones claramente identificados con acciones específicas
-4. **Mensajes de Estado**: Alertas de confirmación para acciones importantes
-5. **Formularios Validados**: Verificación de campos requeridos antes de enviar
+1. **Almacenamiento Centralizado**: Todos los datos se guardan en el servidor, permitiendo acceso desde múltiples dispositivos
+2. **API REST**: Comunicación cliente-servidor mediante endpoints HTTP
+3. **Timestamps Automáticos**: Cada noticia y comentario incluye fecha y hora
+4. **Contador de Comentarios**: Muestra el número de comentarios por noticia
+5. **Interfaz Intuitiva**: Botones claramente identificados con acciones específicas
+6. **Mensajes de Estado**: Alertas de confirmación para acciones importantes
+7. **Formularios Validados**: Verificación de campos requeridos antes de enviar
 
 ## 🌐 Compatibilidad
 
