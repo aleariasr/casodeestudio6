@@ -2,6 +2,20 @@
 
 Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript puro. Permite publicar noticias y que los visitantes comenten en cada publicación.
 
+## 🌐 Acceso Directo (Sin Descargas)
+
+**¡Usa el blog sin instalar nada!** Despliega en la nube y accede desde cualquier dispositivo.
+
+### 📚 Guías de Despliegue:
+- 👉 **[INICIO RÁPIDO](INICIO-RAPIDO.md)** - Despliega en 5 minutos (Recomendado para principiantes)
+- 📖 **[Guía Completa de Despliegue](DEPLOYMENT.md)** - Todas las opciones de despliegue
+
+Una vez desplegado, solo necesitas compartir la URL y cualquiera puede:
+- ✅ Ver el blog desde su navegador (PC, móvil, tablet)
+- ✅ Publicar noticias
+- ✅ Comentar en publicaciones
+- ✅ **Sin necesidad de descargar o instalar nada**
+
 ## 🌟 Características
 
 - ✅ **Publicación de Noticias**: Formulario completo para crear noticias con título, autor y contenido
@@ -15,7 +29,17 @@ Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript p
 
 ## 🚀 Cómo Usar
 
-### Instalación y Configuración
+### Opción 1: Acceso en la Nube (Recomendado - Sin Instalación)
+
+**¡La forma más fácil!** Despliega el blog en la nube y accede desde cualquier dispositivo sin descargar nada.
+
+1. **Sigue la [Guía de Despliegue](DEPLOYMENT.md)** para desplegar gratis en Render, Railway o Vercel
+2. **Comparte la URL** que te proporciona la plataforma (ej: `https://tu-blog.onrender.com`)
+3. **¡Listo!** Tú y otros pueden acceder al blog desde cualquier navegador
+
+### Opción 2: Instalación Local (Para Desarrollo)
+
+Si quieres ejecutar el blog en tu computadora local:
 
 1. **Instalar dependencias**:
    ```bash
