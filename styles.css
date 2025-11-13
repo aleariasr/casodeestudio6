@@ -1,0 +1,298 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main content */
+main {
+    padding: 2rem 0;
+}
+
+/* Sección de crear post */
+.create-post-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.create-post-section h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Botones */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+/* Sección de posts */
+.posts-section h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+#posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.post {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.post-header {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-title {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    white-space: pre-wrap;
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Sección de comentarios */
+.comments-section {
+    border-top: 2px solid #f0f0f0;
+    padding-top: 1.5rem;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.comments-header h3 {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.comment-form {
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.comment-form.active {
+    display: block;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.comment-form textarea {
+    resize: vertical;
+}
+
+.comments-list {
+    margin-top: 1rem;
+}
+
+.comment {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-left: 3px solid #667eea;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #667eea;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.comment-text {
+    color: #555;
+    line-height: 1.6;
+}
+
+.no-comments {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+.no-posts {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .post-title {
+        font-size: 1.5rem;
+    }
+    
+    .post-actions {
+        flex-direction: column;
+    }
+}
