@@ -10,7 +10,7 @@ const DATA_FILE = path.join(__dirname, 'data', 'posts.json');
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Asegurar que el directorio de datos existe
 async function ensureDataDir() {

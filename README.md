@@ -47,13 +47,14 @@ Un sitio web de blog completamente funcional creado con HTML, CSS y JavaScript p
 
 ```
 casodeestudio6/
-├── index.html      # Estructura HTML del blog
-├── styles.css      # Estilos CSS
-├── script.js       # Lógica JavaScript del cliente
-├── server.js       # Servidor backend Node.js/Express
-├── package.json    # Dependencias del proyecto
-├── data/           # Directorio para almacenar posts.json (generado automáticamente)
-└── README.md       # Este archivo
+├── public/             # Archivos estáticos del frontend
+│   ├── index.html      # Estructura HTML del blog
+│   ├── styles.css      # Estilos CSS
+│   └── script.js       # Lógica JavaScript del cliente
+├── server.js           # Servidor backend Node.js/Express
+├── package.json        # Dependencias del proyecto
+├── data/               # Directorio para almacenar posts.json (generado automáticamente)
+└── README.md           # Este archivo
 ```
 
 ## 💻 Tecnologías Utilizadas
